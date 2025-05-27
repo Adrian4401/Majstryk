@@ -7,7 +7,7 @@ export default function HeaderWithUser() {
 
     return (
         <View style={styles.header}>
-            <View style={{ flexDirection: "row", alignItems: "center", marginBottom: 20 }}>
+            <View style={{ flexDirection: "row", alignItems: "center" }}>
                 <Ionicons name="person" size={20} color={colors.textLight} />
                 <Text style={styles.title}>Witaj, Marian!</Text>
             </View>
@@ -23,7 +23,7 @@ export default function HeaderWithUser() {
                     </TouchableOpacity>
                 </View>
                 <TouchableOpacity style={styles.searchOptions}>
-                    <Ionicons name="options" size={20} color={colors.textLight} />
+                    <Ionicons name="options" size={20} color={colors.textSecondary} />
                 </TouchableOpacity>
             </View>
         </View>
@@ -35,8 +35,10 @@ const styles = StyleSheet.create({
     header: {
         backgroundColor: colors.primary,
         padding: 20,
+        paddingTop: 10,
         borderBottomEndRadius: 40,
         borderBottomStartRadius: 40,
+        gap: 20,
     },
     title: {
         fontSize: 20,
