@@ -1,5 +1,5 @@
 import Ionicons from '@expo/vector-icons/Ionicons';
-import { StatusBar, StyleSheet, Text, TextInput, TouchableOpacity, View } from "react-native";
+import { StyleSheet, Text, TextInput, TouchableOpacity, View } from "react-native";
 import colors from "../constants/colors";
 
 export default function HeaderWithUser() {
@@ -7,14 +7,17 @@ export default function HeaderWithUser() {
 
     return (
         <View style={styles.header}>
-            <StatusBar barStyle={'light-content'} backgroundColor={colors.primary} translucent={false} />
             <View style={{ flexDirection: "row", alignItems: "center", marginBottom: 20 }}>
                 <Ionicons name="person" size={20} color={colors.textLight} />
                 <Text style={styles.title}>Witaj, Marian!</Text>
             </View>
-            <View style={{ flexDirection: "row", alignItems: "center" }}>
+            <View style={{ flexDirection: "row", alignItems: "center", gap: 30 }}>
                 <View style={styles.searchView}>
-                    <TextInput placeholder="Search..." onChangeText={() => searchQuery} />
+                    <TextInput
+                        placeholder="Search..."
+                        onChangeText={() => searchQuery}
+                        style={{ flex: 1, marginRight: 10, fontSize: 16 }}
+                    />
                     <TouchableOpacity>
                         <Ionicons name="search" size={20} color={colors.textMuted} />
                     </TouchableOpacity>
@@ -26,6 +29,7 @@ export default function HeaderWithUser() {
         </View>
     );
 }
+
 
 const styles = StyleSheet.create({
     header: {
@@ -57,7 +61,6 @@ const styles = StyleSheet.create({
         justifyContent: "space-between"
     },
     searchOptions: {
-        marginStart: 10,
         backgroundColor: colors.secondary,
         borderRadius: 10,
         padding: 10

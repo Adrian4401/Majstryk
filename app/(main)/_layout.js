@@ -1,10 +1,12 @@
-import Ionicons from '@expo/vector-icons/Ionicons';
+import { faHome, faPlus, faUserGear } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import { useRouter } from 'expo-router';
-import { Alert, Animated, StyleSheet, TouchableOpacity } from 'react-native';
+import { Alert, Animated, Platform, StyleSheet, TouchableOpacity } from 'react-native';
 import { CurvedBottomBarExpo } from 'react-native-curved-bottom-bar';
 import colors from '../constants/colors.ts';
 import HomeScreen from './index.tsx';
 import SettingsScreen from './settings.tsx';
+
 
 export default function MainLayout() {
   const router = useRouter();
@@ -14,7 +16,7 @@ export default function MainLayout() {
 
     switch (routeName) {
       case 'index':
-        icon = 'home';
+        icon = faHome;
         break;
       // case '-':
       //   icon = 'chatbox-ellipses';
@@ -23,13 +25,13 @@ export default function MainLayout() {
       //   icon = 'bookmark';
       //   break;
       case 'settings':
-        icon = 'settings-sharp';
+        icon = faUserGear;
         break;
     }
 
     return (
-      <Ionicons
-        name={icon}
+      <FontAwesomeIcon
+        icon={icon}
         size={25}
         color={routeName === selectedTab ? colors.primary : colors.iconsLight}
       />
@@ -51,14 +53,14 @@ export default function MainLayout() {
     <CurvedBottomBarExpo.Navigator
       screenOptions={{ headerShown: false }}
       type="DOWN"
-      height={60}
+      height={Platform.OS === 'ios' ? 55 : 50}
       circleWidth={50}
       bgColor={colors.bottomNavBackground}
       initialRouteName="index"
       renderCircle={({ selectedTab, navigate }) => (
         <Animated.View style={styles.circleButton}>
           <TouchableOpacity onPress={() => Alert.alert('Click Action')}>
-            <Ionicons name={'add'} color={colors.textLight} size={40} />
+            <FontAwesomeIcon icon={faPlus} color={colors.textLight} size={40} />
           </TouchableOpacity>
         </Animated.View>
       )}
