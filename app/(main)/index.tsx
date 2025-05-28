@@ -1,4 +1,5 @@
-import { SafeAreaView, StatusBar, Text, View } from "react-native";
+import { SafeAreaView, StatusBar, View } from "react-native";
+import CategoriesList from "../components/CategoriesList";
 import HeaderWithUser from "../components/HeaderWithUser";
 import { useDarkMode } from "../context/DarkModeContext";
 
@@ -12,7 +13,7 @@ export default function HomeScreen() {
             </SafeAreaView>
             <View style={{ flex: 1, backgroundColor: theme.background }}>
                 <HeaderWithUser />
-                <Text>Home</Text>
+                <CategoriesList />
             </View>
         </>
     );
