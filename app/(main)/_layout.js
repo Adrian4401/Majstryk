@@ -3,13 +3,14 @@ import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import { useRouter } from 'expo-router';
 import { Alert, Animated, Platform, StyleSheet, TouchableOpacity } from 'react-native';
 import { CurvedBottomBarExpo } from 'react-native-curved-bottom-bar';
-import colors from '../constants/colors.ts';
+import { useDarkMode } from '../context/DarkModeContext.js';
 import HomeScreen from './index.tsx';
 import SettingsScreen from './settings.tsx';
 
 
 export default function MainLayout() {
   const router = useRouter();
+  const { theme } = useDarkMode();
 
   const renderIcon = (routeName, selectedTab) => {
     let icon = '';
@@ -33,7 +34,7 @@ export default function MainLayout() {
       <FontAwesomeIcon
         icon={icon}
         size={25}
-        color={routeName === selectedTab ? colors.primary : colors.iconsLight}
+        color={routeName === selectedTab ? theme.primary : theme.iconsLight}
       />
     );
   };
@@ -55,12 +56,12 @@ export default function MainLayout() {
       type="DOWN"
       height={Platform.OS === 'ios' ? 55 : 50}
       circleWidth={50}
-      bgColor={colors.bottomNavBackground}
+      bgColor={theme.bottomNavBackground}
       initialRouteName="index"
       renderCircle={({ selectedTab, navigate }) => (
-        <Animated.View style={styles.circleButton}>
+        <Animated.View style={{ ...styles.circleButton, backgroundColor: theme.iconsLight}}>
           <TouchableOpacity onPress={() => Alert.alert('Click Action')}>
-            <FontAwesomeIcon icon={faPlus} color={colors.textLight} size={40} />
+            <FontAwesomeIcon icon={faPlus} color={theme.textLight} size={40} />
           </TouchableOpacity>
         </Animated.View>
       )}
@@ -80,7 +81,6 @@ const styles = StyleSheet.create({
     height: 60,
     borderRadius: 30,
     bottom: 30,
-    backgroundColor: colors.iconsLight,
     justifyContent: 'center',
     alignItems: 'center'
   },

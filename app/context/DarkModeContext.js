@@ -1,11 +1,11 @@
-import React, { createContext, useContext, useEffect, useState } from "react";
-// import { lightTheme, darkTheme } from "../assets/styles/colors";
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import React, { createContext, useContext, useEffect, useState } from "react";
+import { darkTheme, lightTheme } from "../constants/colors";
 
 const DarkModeContext = createContext()
 
 export const DarkModeProvider = ({ children }) => {
-    const [darkMode, setDarkMode] = useState(true)
+    const [darkMode, setDarkMode] = useState(false)
 
     useEffect(() => {
         const loadDarkMode = async () => {
@@ -35,7 +35,7 @@ export const DarkModeProvider = ({ children }) => {
         }
     }
 
-    // const theme = darkMode ? darkTheme : lightTheme
+    const theme = darkMode ? darkTheme : lightTheme
 
     return (
         <DarkModeContext.Provider value={{ darkMode, changeDarkMode, theme }}>

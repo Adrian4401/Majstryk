@@ -1,14 +1,16 @@
 import { SafeAreaView, StatusBar, Text, View } from "react-native";
 import HeaderWithUser from "../components/HeaderWithUser";
-import colors from "../constants/colors";
+import { useDarkMode } from "../context/DarkModeContext";
 
 export default function HomeScreen() {
+    const { theme } = useDarkMode();
+
     return (
         <>
-            <SafeAreaView style={{ backgroundColor: colors.primary }}>
-                <StatusBar barStyle={'light-content'} backgroundColor={colors.primary} />
+            <SafeAreaView style={{ backgroundColor: theme.primary }}>
+                <StatusBar barStyle={'light-content'} backgroundColor={theme.primary} />
             </SafeAreaView>
-            <View style={{ flex: 1, backgroundColor: colors.background }}>
+            <View style={{ flex: 1, backgroundColor: theme.background }}>
                 <HeaderWithUser />
                 <Text>Home</Text>
             </View>
