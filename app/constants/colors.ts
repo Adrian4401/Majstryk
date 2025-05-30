@@ -10,6 +10,7 @@ export const lightTheme = {
     "textLight": "#EBEBEB",
     "iconsLight": "#9E9E9E",
     "iconsDark": "#4F4F4F",
+    "iconsBg": "#dcdcdc"
 }
 
 export const darkTheme = {

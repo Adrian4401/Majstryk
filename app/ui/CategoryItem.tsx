@@ -18,13 +18,20 @@ export default function CategoryItem({ text, icon }: CategoryItemProps) {
                     width: 56,
                     height: 56,
                     borderRadius: 16,
-                    backgroundColor: theme.secondary,
+                    backgroundColor: theme.iconsBg,
                     alignItems: "center",
                     justifyContent: "center",
                     marginBottom: 5,
+                    // Cień na zewnątrz (iOS)
+                    shadowColor: "#000",
+                    shadowOffset: { width: 0, height: 0 },
+                    shadowOpacity: 0.2,
+                    shadowRadius: 8,
+                    // Cień na zewnątrz (Android)
+                    elevation: 8,
                 }}
             >
-                <FontAwesomeIcon icon={icon} size={28} color={theme.background} />
+                <FontAwesomeIcon icon={icon} size={28} color={theme.secondary} />
             </View>
             <Text style={{ fontSize: 12, color: theme.text }}>{text}</Text>
         </View>

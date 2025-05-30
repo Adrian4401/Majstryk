@@ -1,11 +1,11 @@
 {
   "expo": {
-    "name": "StudyNoteV2",
-    "slug": "StudyNoteV2",
-    "version": "1.0.0",
+    "name": "Majstryk",
+    "slug": "Majstryk",
+    "version": ".0.1",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
-    "scheme": "studynotev2",
+    "scheme": "majstryk",
     "userInterfaceStyle": "automatic",
     "newArchEnabled": true,
     "ios": {

@@ -5,6 +5,7 @@ import HeadingText from "../ui/typography/HeadingText";
 
 const ITEM_PER_ROW = 4;
 const GAP = 12;
+const ROW_GAP = 4; // Wysokość elementu, może być dostosowana
 const ITEM_WIDTH =
     (Dimensions.get("window").width - 40 - GAP * (ITEM_PER_ROW - 1)) / ITEM_PER_ROW;
 
@@ -31,7 +32,16 @@ export default function CategoriesList() {
                 }}
             >
                 {categories.map((category, idx) => (
-                    <TouchableOpacity key={idx} style={{ width: ITEM_WIDTH }}>
+                    <TouchableOpacity 
+                        key={idx} 
+                        style={{ 
+                            width: ITEM_WIDTH,
+                            marginBottom:
+                            Math.floor(idx / ITEM_PER_ROW) < Math.floor((categories.length - 1) / ITEM_PER_ROW)
+                                ? ROW_GAP
+                                : 0,
+                        }}
+                    >
                         <CategoryItem text={category.text} icon={category.icon} />
                     </TouchableOpacity>
                 ))}
