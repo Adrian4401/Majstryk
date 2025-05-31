@@ -1,5 +1,6 @@
-import { SafeAreaView, StatusBar, View } from "react-native";
+import { SafeAreaView, ScrollView, StatusBar } from "react-native";
 import CategoriesList from "../components/CategoriesList";
+import GuidesList from "../components/GuidesList";
 import HeaderWithUser from "../components/HeaderWithUser";
 import { useDarkMode } from "../context/DarkModeContext";
 
@@ -11,10 +12,14 @@ export default function HomeScreen() {
             <SafeAreaView style={{ backgroundColor: theme.primary }}>
                 <StatusBar barStyle={'light-content'} backgroundColor={theme.primary} />
             </SafeAreaView>
-            <View style={{ flex: 1, backgroundColor: theme.background }}>
+            <ScrollView 
+                style={{ flex: 1, backgroundColor: theme.background }}
+                contentContainerStyle={{ paddingBottom: 120 }}
+            >
                 <HeaderWithUser />
                 <CategoriesList />
-            </View>
+                <GuidesList headlineText="Porady" />
+            </ScrollView>
         </>
     );
 }

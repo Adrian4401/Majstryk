@@ -18,16 +18,16 @@ export default function CategoryItem({ text, icon }: CategoryItemProps) {
                     width: 56,
                     height: 56,
                     borderRadius: 16,
-                    backgroundColor: theme.iconsBg,
+                    backgroundColor: theme.lightGrayBg,
                     alignItems: "center",
                     justifyContent: "center",
                     marginBottom: 5,
-                    // Cień na zewnątrz (iOS)
+                    // Shadow iOS
                     shadowColor: "#000",
                     shadowOffset: { width: 0, height: 0 },
                     shadowOpacity: 0.2,
                     shadowRadius: 8,
-                    // Cień na zewnątrz (Android)
+                    // Shadow Android
                     elevation: 8,
                 }}
             >

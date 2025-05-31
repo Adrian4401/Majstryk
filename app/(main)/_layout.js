@@ -1,4 +1,4 @@
-import { faHome, faPlus, faUserGear } from '@fortawesome/free-solid-svg-icons';
+import { faBookmark, faHome, faMessage, faPlus, faUserGear } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import { useRouter } from 'expo-router';
 import { Alert, Animated, Platform, StyleSheet, TouchableOpacity } from 'react-native';
@@ -19,12 +19,12 @@ export default function MainLayout() {
       case 'index':
         icon = faHome;
         break;
-      // case '-':
-      //   icon = 'chatbox-ellipses';
-      //   break;
-      // case '+':
-      //   icon = 'bookmark';
-      //   break;
+      case 'messages':
+        icon = faMessage;
+        break;
+      case 'marked':
+        icon = faBookmark;
+        break;
       case 'settings':
         icon = faUserGear;
         break;
@@ -54,7 +54,7 @@ export default function MainLayout() {
     <CurvedBottomBarExpo.Navigator
       screenOptions={{ headerShown: false }}
       type="DOWN"
-      height={Platform.OS === 'ios' ? 55 : 50}
+      height={Platform.OS === 'ios' ? 60 : 50}
       circleWidth={50}
       bgColor={theme.bottomNavBackground}
       initialRouteName="index"
@@ -68,8 +68,8 @@ export default function MainLayout() {
       tabBar={renderTabBar}
     >
       <CurvedBottomBarExpo.Screen name="index" position="LEFT" component={HomeScreen} />
-      {/* <CurvedBottomBarExpo.Screen name="-" position="LEFT" component={() => <Slot />} />
-      <CurvedBottomBarExpo.Screen name="+" position="RIGHT" component={() => <Slot />} /> */}
+      <CurvedBottomBarExpo.Screen name="messages" position="LEFT" component={HomeScreen} />
+      <CurvedBottomBarExpo.Screen name="marked" position="RIGHT" component={SettingsScreen} />
       <CurvedBottomBarExpo.Screen name="settings" position="RIGHT" component={SettingsScreen} />
     </CurvedBottomBarExpo.Navigator>
   );
