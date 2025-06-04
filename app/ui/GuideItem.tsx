@@ -1,5 +1,5 @@
 import { IconProp } from "@fortawesome/fontawesome-svg-core";
-import { faBookmark } from "@fortawesome/free-solid-svg-icons";
+import { faBookmark, faClock, faCrown } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
 import { Image, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import { useDarkMode } from "../context/DarkModeContext";
@@ -9,10 +9,12 @@ interface CategoryItemProps {
     // icon: IconProp;
     categoryName: string;
     categoryIcon: IconProp;
+    time: string;
+    difficulty: string;
     isMarked: boolean;
 }
 
-export default function GuideItem({ text, isMarked, categoryName, categoryIcon }: CategoryItemProps) {
+export default function GuideItem({ text, isMarked, categoryName, categoryIcon, time, difficulty }: CategoryItemProps) {
     const { theme } = useDarkMode();
 
     return (
@@ -23,16 +25,37 @@ export default function GuideItem({ text, isMarked, categoryName, categoryIcon }
                     style={{ width: '100%', height: '100%', borderRadius: 16 }}
                     resizeMode="cover"
                 />
-                {/* <FontAwesomeIcon icon={icon} size={28} color={theme.secondary} /> */}
             </View>
             <View style={styles.content}>
                 <View style={styles.upperContent}>
-                    <Text style={{ fontSize: 16, fontWeight: 'bold', color: theme.text }}>{text}</Text>
-                    <FontAwesomeIcon icon={faBookmark} size={18} color={isMarked ? theme.secondary : theme.textSecondary} />
+                    <Text
+                        style={{ 
+                            fontSize: 16,
+                            fontWeight: 'bold',
+                            color: theme.text,
+                            flexShrink: 1,
+                            maxWidth: '85%' 
+                        }}
+                        numberOfLines={1}
+                        ellipsizeMode="tail"
+                    >
+                        {text}
+                    </Text>
+                    <FontAwesomeIcon icon={faBookmark} size={18} color={isMarked ? theme.secondary : theme.textSecondary} style={{ marginLeft: 10 }} />
                 </View>
                 <View style={styles.midContent}>
-                    <FontAwesomeIcon icon={categoryIcon} size={14} color={theme.accent} />
-                    <Text style={{ fontSize: 14, color: theme.text }}>{categoryName}</Text>
+                    <FontAwesomeIcon icon={categoryIcon} size={12} color={theme.accent} />
+                    <Text style={{ fontSize: 12, color: theme.text }}>{categoryName}</Text>
+                </View>
+                <View style={styles.lowerContent}>
+                    <View style={styles.midContent}>
+                        <FontAwesomeIcon icon={faClock} size={12} color={theme.accent} />
+                        <Text style={{ fontSize: 12, color: theme.text }}>{time}</Text>
+                    </View>
+                    <View style={styles.midContent}>
+                        <FontAwesomeIcon icon={faCrown} size={12} color={theme.accent} />
+                        <Text style={{ fontSize: 12, color: theme.text }}>{difficulty}</Text>
+                    </View>
                 </View>
             </View>
         </TouchableOpacity>
@@ -76,13 +99,18 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         alignItems: 'center',
         justifyContent: 'space-between',
-        gap: 5,
         width: '100%',
     },
     midContent: {
         flexDirection: 'row',
         alignItems: 'center',
         gap: 10,
+    },
+    lowerContent: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        gap: 10,
         width: '100%',
-    }
+        justifyContent: 'space-between',
+    },
 });
