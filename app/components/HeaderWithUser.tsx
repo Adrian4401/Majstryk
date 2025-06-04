@@ -24,7 +24,7 @@ export default function HeaderWithUser() {
                     </TouchableOpacity>
                 </View>
                 <TouchableOpacity style={{ ...styles.searchOptions, backgroundColor: theme.secondary }}>
-                    <Ionicons name="options" size={20} color={theme.textSecondary} />
+                    <Ionicons name="options" size={20} color={theme.textPrimary} />
                 </TouchableOpacity>
             </View>
         </View>

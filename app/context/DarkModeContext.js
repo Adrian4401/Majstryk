@@ -5,7 +5,7 @@ import { darkTheme, lightTheme } from "../constants/colors";
 const DarkModeContext = createContext()
 
 export const DarkModeProvider = ({ children }) => {
-    const [darkMode, setDarkMode] = useState(false)
+    const [darkMode, setDarkMode] = useState(true)
 
     useEffect(() => {
         const loadDarkMode = async () => {

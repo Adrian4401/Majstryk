@@ -33,7 +33,7 @@ export default function CategoryItem({ text, icon }: CategoryItemProps) {
             >
                 <FontAwesomeIcon icon={icon} size={28} color={theme.secondary} />
             </View>
-            <Text style={{ fontSize: 12, color: theme.text }}>{text}</Text>
+            <Text style={{ fontSize: 12, color: theme.textPrimary }}>{text}</Text>
         </View>
     );
 }

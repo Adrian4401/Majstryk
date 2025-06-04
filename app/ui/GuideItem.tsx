@@ -29,32 +29,28 @@ export default function GuideItem({ text, isMarked, categoryName, categoryIcon, 
             <View style={styles.content}>
                 <View style={styles.upperContent}>
                     <Text
-                        style={{ 
-                            fontSize: 16,
-                            fontWeight: 'bold',
-                            color: theme.text,
-                            flexShrink: 1,
-                            maxWidth: '85%' 
-                        }}
+                        style={{ fontSize: 16, fontWeight: 'bold', color: theme.textPrimary, flexShrink: 1, maxWidth: '85%' }}
                         numberOfLines={1}
                         ellipsizeMode="tail"
                     >
                         {text}
                     </Text>
-                    <FontAwesomeIcon icon={faBookmark} size={18} color={isMarked ? theme.secondary : theme.textSecondary} style={{ marginLeft: 10 }} />
+                    <TouchableOpacity onPress={() => console.log('Bookmark pressed')}>
+                        <FontAwesomeIcon icon={faBookmark} size={18} color={isMarked ? theme.secondary : theme.textSecondary} />
+                    </TouchableOpacity>
                 </View>
                 <View style={styles.midContent}>
                     <FontAwesomeIcon icon={categoryIcon} size={12} color={theme.accent} />
-                    <Text style={{ fontSize: 12, color: theme.text }}>{categoryName}</Text>
+                    <Text style={{ fontSize: 12, color: theme.textSecondary }}>{categoryName}</Text>
                 </View>
                 <View style={styles.lowerContent}>
                     <View style={styles.midContent}>
                         <FontAwesomeIcon icon={faClock} size={12} color={theme.accent} />
-                        <Text style={{ fontSize: 12, color: theme.text }}>{time}</Text>
+                        <Text style={{ fontSize: 12, color: theme.textSecondary }}>{time}</Text>
                     </View>
-                    <View style={styles.midContent}>
+                    <View style={{...styles.midContent, width: '30%' }}>
                         <FontAwesomeIcon icon={faCrown} size={12} color={theme.accent} />
-                        <Text style={{ fontSize: 12, color: theme.text }}>{difficulty}</Text>
+                        <Text style={{ fontSize: 12, color: theme.textSecondary }}>{difficulty}</Text>
                     </View>
                 </View>
             </View>
@@ -70,8 +66,6 @@ const styles = StyleSheet.create({
         width: "100%",
         height: 100,
         padding: 10,
-        // alignItems: "center", 
-        // justifyContent: "center",
         borderRadius: 16,
         // Cień na zewnątrz (iOS)
         shadowColor: "#000",
